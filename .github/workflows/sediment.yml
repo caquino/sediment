@@ -4,7 +4,7 @@ on:
 
 
 jobs:
-  milisman:
+  sediment:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
@@ -13,3 +13,5 @@ jobs:
         uses: ./
         with:
           configfile: "./config.yml"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
