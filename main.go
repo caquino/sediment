@@ -70,9 +70,9 @@ func main() {
 		action.Fatalf("failed to get github context.")
 	}
 
-	token := action.Getenv("GITHUB_TOKEN")
+	token := action.GetInput("token")
 	if len(token) == 0 {
-		action.Fatalf("GITHUB_TOKEN is not set")
+		action.Fatalf("token is not set")
 	}
 
 	src := oauth2.StaticTokenSource(

@@ -19,4 +19,4 @@ runs:
       shell: bash
       env:
         INPUT_CONFIG_FILE: ${{ inputs.configfile }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
