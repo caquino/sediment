@@ -87,6 +87,7 @@ func main() {
 	for _, label := range c.Labels {
 		_, _, err = client.Issues.CreateLabel(context.Background(), ghowner, ghname, label)
 		if err != nil {
+			action.Errorf("failed to create label: %s", err.Error())
 			if err.(*github.ErrorResponse).Errors[0].Code == "already_exists" {
 				action.Infof("label %s already exists, skipping.", label.GetName())
 				continue
@@ -101,6 +102,7 @@ func main() {
 	for _, milestone := range c.Milestones {
 		_, _, err = client.Issues.CreateMilestone(context.Background(), ghowner, ghname, milestone)
 		if err != nil {
+			action.Errorf("failed to create milestone: %s", err.Error())
 			if err.(*github.ErrorResponse).Errors[0].Code == "already_exists" {
 				action.Infof("milestone %s already exists, skipping.", milestone.GetTitle())
 				continue
