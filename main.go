@@ -27,7 +27,6 @@ func (c *Config) Validate() error {
 func main() {
 	action := githubactions.New()
 	action.Infof("sediment starting")
-	action.AddStepSummary("# Sediment Report")
 
 	c := Config{
 		ConfigFile: action.GetInput("configfile"),
@@ -61,7 +60,6 @@ func main() {
 	if err := c.Validate(); err != nil {
 		action.Fatalf("invalid configuration: %s", err)
 	}
-	action.AddStepSummary("Using config file: " + c.ConfigFile)
 
 	ghcontext, err := githubactions.Context()
 	if err != nil {
@@ -86,39 +84,30 @@ func main() {
 
 	// create labels based on the configuration using github API
 	action.Group("Labels")
-	action.AddStepSummary("# Labels")
 	for _, label := range c.Labels {
 		_, _, err = client.Issues.CreateLabel(context.Background(), ghowner, ghname, label)
 		if err != nil {
 			if err.(*github.ErrorResponse).Errors[0].Code == "already_exists" {
 				action.Infof("label %s already exists, skipping.", label.GetName())
-				action.AddStepSummary(label.GetName() + " Skipped")
 				continue
 			}
-			action.AddStepSummary(label.GetName() + " Failed")
 			action.Fatalf("failed to create label: %s", err.Error())
 		}
-		action.AddStepSummary(label.GetName() + " Created")
 		action.Infof("label %s created.", label.GetName())
 	}
 	action.EndGroup()
 	// create milestones based on the configuration using github API
 	action.Group("Milestones")
-	action.AddStepSummary("# Milestones")
 	for _, milestone := range c.Milestones {
 		_, _, err = client.Issues.CreateMilestone(context.Background(), ghowner, ghname, milestone)
 		if err != nil {
 			if err.(*github.ErrorResponse).Errors[0].Code == "already_exists" {
 				action.Infof("milestone %s already exists, skipping.", milestone.GetTitle())
-				action.AddStepSummary(milestone.GetTitle() + " Skipped")
 				continue
 			}
-			action.AddStepSummary(milestone.GetTitle() + " Failed")
 			action.Fatalf("failed to create milestone: %s", err.Error())
 		}
-		action.AddStepSummary(milestone.GetTitle() + " Created")
 		action.Infof("milestone %s created.", milestone.GetTitle())
 	}
 	action.EndGroup()
-	action.AddStepSummary("Sediment finished.")
 }
