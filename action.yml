@@ -6,6 +6,9 @@ inputs:
     description: "Path to the config file"
     required: true
     default: "config.yml"
+  token:
+    description: "GitHub token"
+    required: true
 runs:
   using: "composite"
   steps:
