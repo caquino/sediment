@@ -26,8 +26,8 @@ func (c *Config) Validate() error {
 
 func main() {
 	action := githubactions.New()
-	action.Infof("milisman starting")
-	action.AddStepSummary("# Milisman Report")
+	action.Infof("sediment starting")
+	action.AddStepSummary("# Sediment Report")
 
 	c := Config{
 		ConfigFile: action.GetInput("configfile"),
@@ -120,5 +120,5 @@ func main() {
 		action.Infof("milestone %s created.", milestone.GetTitle())
 	}
 	action.EndGroup()
-	action.AddStepSummary("Milisman finished.")
+	action.AddStepSummary("Sediment finished.")
 }

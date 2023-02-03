@@ -1,4 +1,4 @@
-name: "Milisman Test"
+name: "Sediment Test"
 on:
   workflow_dispatch:
 
@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
-      - name: "Milisman"
+      - name: "Sediment"
         uses: ./
         with:
           configfile: "./config.yml"

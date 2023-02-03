@@ -1,11 +1,11 @@
-name: milisman
+name: sediment
 author: Cassiano Aquino
 description: "Create milestones and labels in a repository"
 inputs:
   configfile:
     description: "Path to the config file"
     required: true
-    default: ".github/milisman.yml"
+    default: "config.yml"
 runs:
   using: docker
   image: Dockerfile
