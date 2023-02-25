@@ -2,20 +2,23 @@ module github.com/caquino/milisman
 
 go 1.19
 
-require github.com/go-playground/validator v9.31.0+incompatible
+require (
+	github.com/go-playground/validator v9.31.0+incompatible
+	github.com/google/go-github/v50 v50.0.0
+	github.com/sethvargo/go-githubactions v1.1.0
+	golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+	gopkg.in/yaml.v3 v3.0.1
+)
 
 require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/golang/protobuf v1.3.2 // indirect
-	github.com/google/go-github/v50 v50.0.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/sethvargo/go-envconfig v0.8.3 // indirect
-	github.com/sethvargo/go-githubactions v1.1.0 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
-	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110 // indirect
-	golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be // indirect
+	golang.org/x/net v0.7.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
+	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
